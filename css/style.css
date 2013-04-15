@@ -1,0 +1,41 @@
+.leftPanel {
+	width:250px;
+	height:900px;
+	background-color:green;
+
+}
+
+.topPanel {
+	width:1700px;
+	height:250px;
+	background-color:green;
+}
+
+
+ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.navigation li {
+	display:inline;
+	border-style:groove;
+	border-width:5px;
+	border-color:white;
+	color:white;
+	font-size:40px;
+	position:relative;
+	top:200px;
+	left:250px;
+}
+
+.navigation2 li {
+	border-style:groove;
+	border-width:5px;
+	border-color:white;
+	color:white;
+	font-size:40px;
+	position:relative;
+
+}
