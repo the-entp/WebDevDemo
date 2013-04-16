@@ -43,14 +43,26 @@
 	top:-900px;
 	left:250px;
 	color:black;
+	
 }
 
-.main th {
+.pane {
+	width:50%;
+	height:100%;
+	float:left;
+}
+
+#description textarea{
+	font-size: 35px;
+}
+
+
+#data th {
 	font-size:40px;
 
 }
 
-.main td {
+#data td {
 	font-size:35px;
 }
 
