@@ -1,6 +1,26 @@
 $( // a short-cut for document.ready
 
-	function handleOverlay() {
+    function() {
+    	$('#contentPane').hide();
+
+		animateNavigation();
+		showAbout();
+
+		handleOverlay();
+
+
+});
+
+	function showAbout() {
+		$('.leftPanel .navigation li').click(function() {
+			if ($(this).text() == "About") {
+				$('#contentPane').toggle();
+			}
+		});
+
+	}
+
+	function addOverlay() {
 		// child selectors '>' refer to direct descendants
 		$('#picPane > .inner > img').click(function(e) {
 			$('<div id="overlay"></div>')
@@ -15,7 +35,9 @@ $( // a short-cut for document.ready
 					'left': ($(window).width() - $(this).width())/2,
 					'position': 'fixed'
 				}).fadeIn().html(
-				$(this)
+				// must clone because appendTo removes 
+				// $(this) from its original place
+				$(this).clone() 
 					.css({
 						'width': '300px',
 						'height': '300px',
@@ -24,12 +46,52 @@ $( // a short-cut for document.ready
 				//of the clicked image
 		});
 
-		$(':not(#container)').click(function() {
-			console.log("i am here");
-			$('body').remove("#container");
-			$('body').remove("#overlay");
-		})
-	},
+	}
+
+	function removeOverlay() {
+		var coord = null;
+		var ele = null;
+		$('#container > img').live('click', function() {
+			var self = this;
+			$(this).Jcrop({
+				setSelect:[75,75,250,250],
+				minSize:[50,50],
+				onChange: function(coords) {
+
+				},
+				onSelect: function(coords) {
+					coord = coords;
+					ele = self;
+				}
+			})
+		});
+		$('#overlay').live('click', function() {
+			$('#container').fadeOut('slow', function() {
+				$(this).remove();
+			});
+		    $(this).fadeOut('slow', function() {
+		    	$(this).remove();
+		    });
+		    // rudimentary client side cropping code
+		    if (ele && coord) {
+		    	var src = $(ele).attr('src');
+
+		    	var image = $('img[src="'+src+'"]');
+
+		    	// image.css({
+		    	// 	'position':'absolute',
+		    	// 	//'clip': 'rect(0px,50px,50px,0px)'
+		    	// })
+		    }
+
+		});
+
+	}
+
+	function handleOverlay() {
+		addOverlay();
+		removeOverlay();
+	}
 
 	function animateNavigation() {
 		// this selector looks for .navigation in all the descendants of .leftPanel..etc.
@@ -43,17 +105,8 @@ $( // a short-cut for document.ready
 			$(this).stop(true).addClass('crooked');
 		});
 
-	},
-	function() {
-		handleOverlay();
-		animateNavigation();
-	
-
 	}
 
-
-	
-);
 
 				// var table = "<table border='1'><th>First name</th><th>Last name</th>" +
 		// 			"<tr><td>John</td><td>Smith</td></tr>" +

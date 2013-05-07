@@ -32,25 +32,31 @@ body {
 }
 
 #splitter {
-	height:150px;
+	height:400px;
 	margin-top: 10%;
 	margin-left:5px;
 }
 
-#splitter .pane {
-	width:50%;
-	height:100%;
-	float:left;
-}
 
 #picPane {
+	width:40%;
+	height:100%;
+	float:left;
 	overflow:auto;
 
 }
 
 #contentPane {
+	width:40%;
+	height:100%;
+	float:left;
 	overflow:auto;
 	
+}
+
+#contentPane p {
+	font-size:25px;
+	font-style:arial;
 }
 
 #overlay {
@@ -62,13 +68,10 @@ body {
 	background:black url('../images/loader.gif') no-repeat scroll center center;
 }
 
-#contentPane .inner {
-
-}
 
 #picPane .inner img{
 	width:30%;
-	height:14%;
+	height:30%;
 }
 
 .crooked {
@@ -77,9 +80,7 @@ body {
 	-ms-transform: rotate(-15deg);
 	-o-transform: rotate(-15deg);
 	transform: rotate(-15deg);
-
 }
-
 
 .topPanel .bugLogo img {
 	position:absolute;
@@ -115,12 +116,7 @@ body {
 	
 }
 
-.pane {
-	width:50%;
-	height:100%;
-	float:left;
-	position:absolute;
-}
+
 
 #description {
 	font-size: 35px;
@@ -139,7 +135,6 @@ body {
 #data td {
 	font-size:35px;
 }
-
 
 ul {
 	list-style-type:none;
